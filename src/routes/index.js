@@ -1,4 +1,6 @@
 const router = require("express").Router()
+const CustomerController = require("../controllers/customers")
+
 
 //GET
 router.get("/", (req, res)=>{
@@ -6,18 +8,15 @@ router.get("/", (req, res)=>{
         title: "Home"
     })
 })
+router.get("/register", (req, res)=>{
+    res.render("register", {
+        title: "Register Clients"
+    })
+})
 
 
 //POST
-
-
-
-//PUT
-
-
-
-//DELETE
-
+router.post("/register/add", CustomerController.add)
 
 
 //EXPORTING

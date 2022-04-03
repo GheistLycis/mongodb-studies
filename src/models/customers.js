@@ -9,15 +9,4 @@ const schema = new mongoose.Schema({
 
 const Model = mongoose.model("customers", schema)
 
-/*
-const register = new Model({
-    name: "Egg",
-    age: 0,
-    email: "egg@egg.com",
-    password: "egg"
-})
-
-register.save()
-*/
-
-module.exports = model
+module.exports = Model
