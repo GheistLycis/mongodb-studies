@@ -18,7 +18,7 @@ async function listUsers(req, res){
     })
 }
 
-async function add(req, res){
+async function registerUser(req, res){
     const {
         name,
         age,
@@ -37,14 +37,49 @@ async function add(req, res){
     
     register.save()
 
-    res.render("register", {
+    res.render("register-user", {
         title,
-        registered: true
+        message: "User Registered Successfully."
     })
+}
+
+async function formEdit(req, res){
+    const {id} = req.query
+    const user = await CustomersModel.findById(id)
+
+    res.render("edit-user", {
+        title: "Edit User",
+        user
+    })
+}
+
+async function editUser(req, res){
+    const {
+        name,
+        age,
+        email,
+    } = req.body
+
+    //-"req.params" stores the post method vars; "req.query" stores the get vars; "req.body" stores the form vars.
+    const {id} = req.params
+    const user = await CustomersModel.findById(id)
+
+    user.name = name
+    user.age = age
+    user.email = email
+    user.save()
+
+    res.render("edit-user", {
+        title: "Edit User",
+        user,
+        message: "User Altered Successfully."
+    })    
 }
 
 module.exports = {
     index, 
     listUsers,
-    add
+    registerUser,
+    formEdit,
+    editUser
 }

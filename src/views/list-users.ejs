@@ -9,7 +9,10 @@
     <ul>
         <% if(users){ %>
             <% users.forEach(user => { %>
-                <li><%= user.name %>, <%= user.age %>: <%= user.email %></li>
+                <li>
+                    <%= user.name %>, <%= user.age %>: <%= user.email %>
+                    <a href="./edit-user?id=<%= user._id %>">[EDIT]</div></a>
+                </li>
             <% }) %>
         <% } %>
     </ul>

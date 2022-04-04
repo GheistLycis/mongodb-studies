@@ -21,13 +21,13 @@
         </div>
         <div>
             <label>Password</label>
-            <input type="text" name="password" placeholder="Type your password">
+            <input type="password" name="password" placeholder="Type your password">
         </div>
         <button type="submit">Submit</button>
     </form>
 
-    <% if(typeof registered !== "undefined"){ %>
-        <h2>Registered Successfully.</h1>
+    <% if(typeof message !== "undefined"){ %>
+        <h2><%= message %></h1>
     <% } %>
     
     <%- include("partials/foot.ejs") %> 

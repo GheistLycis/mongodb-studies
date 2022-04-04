@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<%- include("partials/head.ejs") %> 
+<body>
+    <h1 class="text"><%= title %></h1>
+
+    <%- include("partials/navbar.ejs") %>
+
+    <!-- "/param" is how post method sends a parameter, not "?param=" like get method-->
+    <form action="/edit-user/<%= user._id %>" method="POST">
+        <div>
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Type your name" value="<%= user.name %>">
+        </div>
+        <div>
+            <label>E-mail</label>
+            <input type="text" name="email" placeholder="Type your e-mail" value="<%= user.email %>">
+        </div>
+        <div>
+            <label>Age</label>
+            <input type="text" name="age" placeholder="Type your age" value="<%= user.age %>">
+        </div>
+        <button type="submit">Edit</button>
+    </form>
+
+    <% if(typeof message !== "undefined"){ %>
+        <h2><%= message %></h1>
+    <% } %>
+    
+    <%- include("partials/foot.ejs") %> 
+</body>
+</html>
