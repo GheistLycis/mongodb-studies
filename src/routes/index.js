@@ -9,12 +9,12 @@ router.get("/", IndexController.index)
 router.get("/register-user", CustomersController.index)
 router.get("/list-users", CustomersController.listUsers)
 router.get("/edit-user", CustomersController.formEdit)
+router.get("/remove/:id", CustomersController.removeUser)
 
 
 //POST
 router.post("/register/add", CustomersController.registerUser)
-//-":param" is how post method gets a parameter
-router.post("/edit-user/:id", CustomersController.editUser)
+router.post("/exec-edit/:id", CustomersController.editUser)
 
 
 //EXPORTING

@@ -69,11 +69,14 @@ async function editUser(req, res){
     user.email = email
     user.save()
 
-    res.render("edit-user", {
-        title: "Edit User",
-        user,
-        message: "User Altered Successfully."
-    })    
+    res.redirect("/edit-user")    
+}
+
+async function removeUser(req, res){
+    const {id} = req.params
+    const remove = await CustomersModel.deleteOne({_id: id})
+    
+    if(remove.ok) res.redirect("/list-users")
 }
 
 module.exports = {
@@ -81,5 +84,6 @@ module.exports = {
     listUsers,
     registerUser,
     formEdit,
-    editUser
+    editUser,
+    removeUser
 }
